@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hertz Inspection – QR Report System</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+
+<body style="font-family: Arial; text-align:center; padding:40px;">
+
+<h2>Hertz Inspection – Admin Upload</h2>
+
+<input type="password" id="pass" placeholder="Enter Password" />
+<button onclick="checkPass()">Enter</button>
+
+<div id="uploadSection" style="display:none; margin-top:30px;">
+    
+    <input type="file" id="fileInput" />
+    <br><br>
+    <button onclick="uploadFile()">Upload & Generate QR</button>
+
+    <br><br>
+    <div id="progressBox" style="display:none; width:300px; margin:auto; border:1px solid #ccc;">
+      <div id="progressBar" style="width:0%; background:green; color:white; padding:5px 0;">
+        0%
+      </div>
+    </div>
+
+    <br><br>
+    <canvas id="qrcode"></canvas>
+
+    <br><br>
+    <a id="downloadBtn" style="display:none;" download="qr-code.png">
+        <button>Download QR Code</button>
+    </a>
+
+</div>
+
+<script>
+function checkPass(){
+    var p = document.getElementById("pass").value;
+    if(p === "hertz@123"){
+        document.getElementById("uploadSection").style.display = "block";
+    } else {
+        alert("Wrong Password");
+    }
+}
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
