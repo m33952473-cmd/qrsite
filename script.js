@@ -1,5 +1,15 @@
+let currentReportNo = "";
+
 function uploadFile() {
     const file = document.getElementById("fileInput").files[0];
+    const reportNo = document.getElementById("reportNo").value;
+
+    if(!reportNo){
+        alert("Enter Report No");
+        return;
+    }
+
+    currentReportNo = reportNo;
 
     const formData = new FormData();
     formData.append("file", file);
@@ -27,12 +37,25 @@ function uploadFile() {
         const canvas = document.getElementById('qrcode');
 
         QRCode.toCanvas(canvas, fileUrl, function () {
-            const downloadBtn = document.getElementById("downloadBtn");
-            const imgData = canvas.toDataURL("image/png");
-            downloadBtn.href = imgData;
-            downloadBtn.style.display = "inline-block";
+            document.getElementById("downloadBtn").style.display = "inline-block";
         });
+
+        saveReport(reportNo, fileUrl);
     };
 
     xhr.send(formData);
+}
+
+function downloadQR(){
+    const canvas = document.getElementById('qrcode');
+    const link = document.createElement('a');
+    link.download = currentReportNo + ".png";
+    link.href = canvas.toDataURL();
+    link.click();
+}
+
+function saveReport(no, url){
+    let reports = JSON.parse(localStorage.getItem("reports") || "[]");
+    reports.push({reportNo: no, fileUrl: url});
+    localStorage.setItem("reports", JSON.stringify(reports));
 }
