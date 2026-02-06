@@ -8,8 +8,7 @@
 <script>
   const params = new URLSearchParams(window.location.search);
   const file = params.get("file");
-  document.title = "Report " + params.get("no");
-  window.location.href = file;
+  window.location.replace(file);
 </script>
 
 </body>
