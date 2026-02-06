@@ -18,23 +18,14 @@ function uploadFile() {
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "https://api.cloudinary.com/v1_1/dweefwzka/upload");
 
-    const progressBox = document.getElementById("progressBox");
-    const progressBar = document.getElementById("progressBar");
-    progressBox.style.display = "block";
-
-    xhr.upload.onprogress = function (e) {
-        if (e.lengthComputable) {
-            const percent = Math.round((e.loaded / e.total) * 100);
-            progressBar.style.width = percent + "%";
-            progressBar.innerHTML = percent + "%";
-        }
-    };
-
     xhr.onload = function () {
         const data = JSON.parse(xhr.responseText);
         const fileUrl = data.secure_url;
 
-        const finalUrl = "https://qrsite-drab.vercel.app/view.html?file=" + encodeURIComponent(fileUrl);
+        const finalUrl =
+        "https://hertzinspn.co.in/report.html?no=" 
+        + reportNo +
+        "&file=" + encodeURIComponent(fileUrl);
 
         const canvas = document.getElementById('qrcode');
 
