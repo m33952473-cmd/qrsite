@@ -34,13 +34,13 @@ function uploadFile() {
         const data = JSON.parse(xhr.responseText);
         const fileUrl = data.secure_url;
 
+        const finalUrl = "https://qrsite-drab.vercel.app/view.html?file=" + encodeURIComponent(fileUrl);
+
         const canvas = document.getElementById('qrcode');
 
-        QRCode.toCanvas(canvas, fileUrl, function () {
+        QRCode.toCanvas(canvas, finalUrl, function () {
             document.getElementById("downloadBtn").style.display = "inline-block";
         });
-
-        saveReport(reportNo, fileUrl);
     };
 
     xhr.send(formData);
@@ -52,10 +52,4 @@ function downloadQR(){
     link.download = currentReportNo + ".png";
     link.href = canvas.toDataURL();
     link.click();
-}
-
-function saveReport(no, url){
-    let reports = JSON.parse(localStorage.getItem("reports") || "[]");
-    reports.push({reportNo: no, fileUrl: url});
-    localStorage.setItem("reports", JSON.stringify(reports));
 }
