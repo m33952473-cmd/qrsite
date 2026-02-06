@@ -22,13 +22,13 @@
 
     <button onclick="uploadFile()">Upload & Generate QR</button>
 
-    <br><br>
+    <p id="statusMsg" style="font-weight:bold;"></p>
+
+    <br>
     <canvas id="qrcode"></canvas>
 
     <br><br>
-    <a id="downloadBtn" style="display:none;">
-        <button onclick="downloadQR()">Download QR Code</button>
-    </a>
+    <button id="downloadBtn" style="display:none;" onclick="downloadQR()">Download QR Code</button>
 
 </div>
 
@@ -43,6 +43,5 @@ function checkPass(){
 </script>
 
 <script src="script.js"></script>
-
 </body>
 </html>
