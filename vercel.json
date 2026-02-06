@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/documents/:path*",
-      "destination": "https://res.cloudinary.com/dweefwzka/:path*"
+      "source": "/documents/:report/:file",
+      "destination": "https://res.cloudinary.com/dweefwzka/:file"
     }
   ]
 }
