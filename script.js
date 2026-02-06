@@ -22,10 +22,11 @@ function uploadFile() {
         const data = JSON.parse(xhr.responseText);
         const fileUrl = data.secure_url;
 
+        // sirf file name nikaalna
+        const fileName = fileUrl.split("/").pop();
+
         const finalUrl =
-        "https://hertzinspn.co.in/report.html?no=" 
-        + reportNo +
-        "&file=" + encodeURIComponent(fileUrl);
+        "https://hertzinspn.co.in/documents/" + fileName;
 
         const canvas = document.getElementById('qrcode');
 
