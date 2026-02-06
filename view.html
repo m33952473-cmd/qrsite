@@ -3,12 +3,14 @@
 <head>
   <title>Hertz Inspection Report</title>
 </head>
-<body>
+<body style="margin:0">
+
+<iframe id="pdfFrame" width="100%" height="100%" style="border:none;"></iframe>
 
 <script>
   const params = new URLSearchParams(window.location.search);
   const file = params.get("file");
-  window.location.href = file;
+  document.getElementById("pdfFrame").src = file;
 </script>
 
 </body>
