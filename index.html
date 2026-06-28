@@ -34,7 +34,8 @@
 
 <script>
 function checkPass(){
-    if(document.getElementById("pass").value === "hertz@123"){
+    var p = document.getElementById("pass").value;
+    if(p === "hertz@123"){
         document.getElementById("uploadSection").style.display = "block";
     } else {
         alert("Wrong Password");
