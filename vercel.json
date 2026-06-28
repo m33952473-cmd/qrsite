@@ -1,8 +1,1 @@
-{
-  "rewrites": [
-    {
-      "source": "/documents/:report",
-      "destination": "https://res.cloudinary.com/dweefwzka/raw/upload/:report.pdf"
-    }
-  ]
-}
+
